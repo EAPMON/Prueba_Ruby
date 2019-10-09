@@ -1,3 +1,5 @@
+# reto 3
+
 module Games
   class PuzzleApi < Sinatra::Base
     get '/puzzle/:pid/:size' do
