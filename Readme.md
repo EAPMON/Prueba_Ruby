@@ -6,9 +6,11 @@ hint:  @game.f >= 3 ? @game.h : '',
 
 
 ## Reto 2
+Se creo la clase client en la carpeta hangman llamado client.rb 
+tambien se creo play.rb donde se encuentra la instancia de la clase 
 
-Se creo el cliente en la carpeta hangman llamado client.rb 
-$ ruby hangman/client.rb
+para jugar:
+$ ruby games/hangman/play.rb
 
 ## Reto 3 
 

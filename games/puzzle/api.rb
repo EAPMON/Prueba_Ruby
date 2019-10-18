@@ -128,7 +128,7 @@ module Games
           puzzle: res,
           goal: res2,
           fails: error,
-          ganado: win
+          win: win
         )
   
       end
