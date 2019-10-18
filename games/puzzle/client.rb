@@ -24,10 +24,12 @@ class Client
 	
 	def isWin()
 		if @datos[':puzzle'] == @datos[':goal']
-      puts `clear`
+      		puts `clear`
 			puts 'GANASTE'
 		else 
 			puts `clear`
 			puts 'PERDISTE'
+		end
 	end
+
 end

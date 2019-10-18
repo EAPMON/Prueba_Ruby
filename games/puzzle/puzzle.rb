@@ -18,8 +18,9 @@ module Games
 				game.puzzle[game.positionX][game.positionY] = aux
 				game.positionY = game.positionY + 1
 				game.save
+				return nil
 			else
-				error = "Mala jugada"
+				return error = "Mala jugada"
 			end
 		end
 
@@ -30,8 +31,9 @@ module Games
 				game.puzzle[game.positionX][game.positionY] = aux
 				game.positionY = game.positionY - 1
 				game.save
+				return nil
 			else
-				error = "Mala jugada"
+				return error = "Mala jugada"
 			end
 		end
 
@@ -43,8 +45,9 @@ module Games
 				game.puzzle[game.positionX][game.positionY] = aux
 				game.positionX = game.positionX - 1
 				game.save
+				return nil
 			else
-				error = "mala jugada"
+				return error = "mala jugada"
 			end
 		end
 
@@ -55,8 +58,9 @@ module Games
 				game.puzzle[game.positionX][game.positionY] = aux
 				game.positionX = game.positionX + 1
 				game.save
+				return nil
 			else
-				error = "Mala jugada"
+				return error = "Mala jugada"
 			end
 		end
 

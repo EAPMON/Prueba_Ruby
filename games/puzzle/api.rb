@@ -67,45 +67,13 @@ module Games
         )
       else
         if params[:jugada] == "der"
-          if(@game.positionY != @game.size - 1)
-            aux = @game.puzzle[@game.positionX][@game.positionY+1]
-            @game.puzzle[@game.positionX][@game.positionY+1] = 0
-            @game.puzzle[@game.positionX][@game.positionY] = aux
-            @game.positionY = @game.positionY + 1
-            @game.save
-          else
-            error = "Mala jugada"
-          end
+          error = @game.right(@game)
         elsif params[:jugada] == "izq"
-          if(@game.positionY != 0)
-            aux = @game.puzzle[@game.positionX][@game.positionY-1]
-            @game.puzzle[@game.positionX][@game.positionY-1] = 0
-            @game.puzzle[@game.positionX][@game.positionY] = aux
-            @game.positionY = @game.positionY - 1
-            @game.save
-          else
-            error = "Mala jugada"
-          end
+          error = @game.left(@game)
         elsif params[:jugada] == "aba"
-          if(@game.positionX != @game.size - 1)
-            aux = @game.puzzle[@game.positionX+1][@game.positionY]
-            @game.puzzle[@game.positionX+1][@game.positionY] = 0
-            @game.puzzle[@game.positionX][@game.positionY] = aux
-            @game.positionX = @game.positionX + 1
-            @game.save
-          else
-            error = "Mala jugada"
-          end
+          error = @game.down(@game)
         elsif params[:jugada] == "arr"
-          if(@game.positionX != 0)
-            aux = @game.puzzle[@game.positionX-1][@game.positionY]
-            @game.puzzle[@game.positionX-1][@game.positionY] = 0
-            @game.puzzle[@game.positionX][@game.positionY] = aux
-            @game.positionX = @game.positionX - 1
-            @game.save
-          else
-            error = "mala jugada"
-          end
+          error = @game.up(@game)
         end
         
         res = "<br>"
