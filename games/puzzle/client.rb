@@ -1,5 +1,6 @@
 require 'net/http'
 require 'json'
+require_relative 'helper.rb'
 
 class Client
   def initialize; end
@@ -12,13 +13,16 @@ class Client
 	def log(pid)
 		while @datos[':puzzle'] != @datos[':goal']
 			puts JSON.pretty_generate(@datos)
-      puts 'accion'
-      action = gets.chomp
-      @datos = Net::HTTP.get_response('localhost', "/puzzle/#{pid}/try/#{action}", 9292)
-      @datos = JSON.parse(@datos.body)
-      puts JSON.pretty_generate(@datos)
-      puts 'Enter para continuar'
-      gets.chomp
+			puts 'accion'
+			action = gets.chomp
+			@datos = Net::HTTP.get_response('localhost', "/puzzle/#{pid}/try/#{action}", 9292)
+			@datos = JSON.parse(@datos.body)
+			puts `clear`
+			puts @datos[':puzzle']
+			#puts JSON.pretty_generate(@datos[':puzzle'])
+			c = read_char
+			puts c
+		
     end
 	end
 	
@@ -31,5 +35,7 @@ class Client
 			puts 'PERDISTE'
 		end
 	end
+
+	
 
 end

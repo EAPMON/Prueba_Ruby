@@ -39,19 +39,19 @@ module Games
         @game.save
       end
 
-      res = "<br>"
-      res2  = "<br>"
+      res = "\n"
+      res2  = "\n"
 
       @game.puzzle.each_with_index do |e, row, col|
         e.each_with_index do |f, col,|
           res += @game.puzzle[row][col].to_s + " "
           res2 += @game.objetive[row][col].to_s + " "
         end
-        res += "<br>"
-        res2 += "<br>"
+        res += "\n"
+        res2 += "\n"
       end
 
-      
+
 
       Oj.dump(
         puzzle: res,
@@ -78,16 +78,16 @@ module Games
           error = @game.up(@game)
         end
         
-        res = "<br>"
-        res2  = "<br>"
+        res = ""
+        res2  = "\n"
   
         @game.puzzle.each_with_index do |e, row, col|
           e.each_with_index do |f, col,|
             res += @game.puzzle[row][col].to_s + " "
             res2 += @game.objetive[row][col].to_s + " "
           end
-          res += "<br>"
-          res2 += "<br>"
+          res += "\n"
+          res2 += "\\n "
         end
   
         if res == res2
