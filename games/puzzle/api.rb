@@ -2,17 +2,28 @@
 
 module Games
   class PuzzleApi < Sinatra::Base
+    def self.dataOrder(size)
+      limite = size ** 2
+      dataorder = (0..limite - 1).to_a
+      aux = dataorder.shift
+      dataorder << aux
+      return dataorder
+    end
+
+    def self.data(size)
+      limite = size ** 2
+      data = (0..limite - 1).to_a.shuffle
+      return data
+    end
+
     get "/puzzle/:pid/:size" do
       @game = Puzzle.where(pid: params[:pid]).first
       if @game.nil?
         size = params[:size].to_i
-        limite = size ** 2
         y = 0
         x = 0
-        dataorder = (0..limite - 1).to_a
-        data = (0..limite - 1).to_a.shuffle
-        aux = dataorder.shift
-        dataorder << aux
+        dataorder = PuzzleApi.dataOrder(size)
+        data = PuzzleApi.data(size)
 
         m = Array.new(size) { Array.new(size, 0) }
         mC = Array.new(size) { Array.new(size, 0) }
@@ -69,13 +80,13 @@ module Games
         )
       else
         if params[:jugada] == "der"
-          error = @game.right(@game)
+          @game.right(@game)
         elsif params[:jugada] == "izq"
-          error = @game.left(@game)
+          @game.left(@game)
         elsif params[:jugada] == "aba"
-          error = @game.down(@game)
+          @game.down(@game)
         elsif params[:jugada] == "arr"
-          error = @game.up(@game)
+          @game.up(@game)
         end
 
         res = ""

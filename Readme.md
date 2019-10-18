@@ -1,3 +1,5 @@
+
+
 ## Reto 1 
 
 Se agrego  un condicional inline en el archvo api.rb dentro de la carpeta hangman
@@ -28,9 +30,13 @@ para jugar:
 se utilizan las flechas del teclado para todos los movimientos posibles 
 
 para ganar: debe ordenar los numeros del puzzle de forma ascendente 
-# ejemplo 
+## ejemplo 
 
-# 1 2 3
-# 4 5 6
-# 7 8 0
+## 1 2 3
+## 4 5 6
+## 7 8 0
+ 
+una vez terminado el juego puedo iniciar nuevamente con la letras 's' de o contrario 'n'
+
+# En caso de cualquier problema contactarme: 3508191586 - pintoeric16@gmail.com
 
