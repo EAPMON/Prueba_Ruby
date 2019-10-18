@@ -9,6 +9,7 @@ gem 'oj'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rack-parser', require: 'rack/parser'
 
+gem 'rufo'
 gem 'pry'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'

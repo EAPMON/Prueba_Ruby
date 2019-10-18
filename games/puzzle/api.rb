@@ -2,18 +2,18 @@
 
 module Games
   class PuzzleApi < Sinatra::Base
-    get '/puzzle/:pid/:size' do
+    get "/puzzle/:pid/:size" do
       @game = Puzzle.where(pid: params[:pid]).first
       if @game.nil?
         size = params[:size].to_i
-        limite = size**2
+        limite = size ** 2
         y = 0
         x = 0
-        dataorder = (0..limite -1).to_a
-        data = (0..limite -1).to_a.shuffle
+        dataorder = (0..limite - 1).to_a
+        data = (0..limite - 1).to_a.shuffle
         aux = dataorder.shift
         dataorder << aux
-        
+
         m = Array.new(size) { Array.new(size, 0) }
         mC = Array.new(size) { Array.new(size, 0) }
 
@@ -21,29 +21,29 @@ module Games
           e.each_with_index do |f, col|
             m[row][col] = data.pop
             mC[row][col] = dataorder.shift
-            if m[row][col] == 0 
+            if m[row][col] == 0
               x = row
               y = col
             end
           end
         end
-        
+
         @game = Puzzle.new(
           pid: params[:pid],
           puzzle: m,
           objetive: mC,
           positionX: x,
           positionY: y,
-          size: size
+          size: size,
         )
         @game.save
       end
 
-      res = "\n"
-      res2  = "\n"
+      res = ""
+      res2 = "\n"
 
       @game.puzzle.each_with_index do |e, row, col|
-        e.each_with_index do |f, col,|
+        e.each_with_index do |f, col, |
           res += @game.puzzle[row][col].to_s + " "
           res2 += @game.objetive[row][col].to_s + " "
         end
@@ -51,21 +51,21 @@ module Games
         res2 += "\n"
       end
 
-
-
       Oj.dump(
         puzzle: res,
         goal: res2,
+        m1: @game.puzzle,
+        m2: @game.objetive,
       )
     end
 
-    get '/puzzle/:pid/try/:jugada' do
+    get "/puzzle/:pid/try/:jugada" do
       fails = ""
       win = false
       @game = Puzzle.where(pid: params[:pid]).first
       if @game.nil?
         Oj.dump(
-          error: "No existe el juego"
+          error: "No existe el juego",
         )
       else
         if params[:jugada] == "der"
@@ -77,36 +77,31 @@ module Games
         elsif params[:jugada] == "arr"
           error = @game.up(@game)
         end
-        
+
         res = ""
-        res2  = "\n"
-  
+        res2 = "\n"
+
         @game.puzzle.each_with_index do |e, row, col|
-          e.each_with_index do |f, col,|
+          e.each_with_index do |f, col, |
             res += @game.puzzle[row][col].to_s + " "
             res2 += @game.objetive[row][col].to_s + " "
           end
           res += "\n"
-          res2 += "\\n "
+          res2 += "\n"
         end
-  
+
         if res == res2
           win = true
         end
-  
+
         Oj.dump(
           puzzle: res,
           goal: res2,
-          fails: error,
-          win: win
+          win: win,
+          m1: @game.puzzle,
+          m2: @game.objetive,
         )
-  
       end
-  
-  
+    end
   end
-
-
-
-	end		
 end
