@@ -28,8 +28,9 @@ para jugar:
 se utilizan las flechas del teclado para todos los movimientos posibles 
 
 para ganar: debe ordenar los numeros del puzzle de forma ascendente 
-#ejemplo 
-#1 2 3
-#4 5 6
-#7 8 0
+# ejemplo 
+
+# 1 2 3
+# 4 5 6
+# 7 8 0
 
