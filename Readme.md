@@ -14,14 +14,22 @@ $ ruby games/hangman/play.rb
 
 ## Reto 3 
 
-Se crearon los archivos api.rb y puzzle.rb dentro de la carpeta puzzle 
+Se crearon los archivos api.rb, puzzle.rb, herper.rb, client.rb y play.rb dentro de la carpeta puzzle 
 
 instrucciones:
 
-'/puzzle/:pid/:size' 
+para iniciar el juego: 
+$ ruby games/puzzle/play.rb
 
-recibe el pid del juego y el tamaño de la matriz 
+pid es el identificador del juego 
+size es el tamaño de la matriz cuadrada 
 
-'/puzzle/:pid/try/:jugada'
+para jugar:
+se utilizan las flechas del teclado para todos los movimientos posibles 
 
-recibe el pid del juego y la accion de juego  ['izq', 'arr', 'der', 'aba']
+para ganar: debe ordenar los numeros del puzzle de forma ascendente 
+#ejemplo 
+#1 2 3
+#4 5 6
+#7 8 0
+
