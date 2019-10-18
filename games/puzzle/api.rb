@@ -51,6 +51,8 @@ module Games
         res2 += "<br>"
       end
 
+      
+
       Oj.dump(
         puzzle: res,
         goal: res2,
